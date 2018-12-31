@@ -1,0 +1,9 @@
+#这个是每日工作内容，里面填写的内容会覆盖params.txt里面的各项内容
+#如果工作内容较多，可用两个**表示换行，在填表时会自动换行
+#params.txt中所有项都可以根据实际情况修改
+#建议在daily目录下按月建立不同的目录，每月底把当月记录文件移动到子目录中
+#行首的#表示改行是注释，会被程序忽略
+f_am_content: Write a program to generate project.  **Tech report about prefect algorithm in HPC.
+f_pm_content: Group meeting with students. **Write progress report. **Submit cloud experiment draft to press.
+#f_am_starttime: 09:00
+#f_am_endtime:	11:50

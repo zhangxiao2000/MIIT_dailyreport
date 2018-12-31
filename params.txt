@@ -1,0 +1,32 @@
+#这个是填表所需的所有项目，冒号前是项目，冒号后是具体的内容
+#这个是基础表格，比如到某个学校学习，每天地点和指导教师都是固定的就可以修改这个表格
+#每天差异数据在daily目录下
+f_am_unit:	Illinois Institute of Technology
+f_am_addr: Stuart Building, Room XXXX
+f_am_starttime: 09:00
+f_am_endtime:	11:50
+f_am_teachername:	Teacher Name
+f_am_teacherunit:	Department of Computer Science
+f_am_teacherjob:	Professor
+f_am_teachertel: Teacher email address
+f_am_peoples:	4
+f_am_content: Read paper about HPC, cache and workloads. Design and do some experiment on cluster.
+#f_am_delay_num:	0
+#f_am_early_level_num:	0
+#f_data_status	
+#f_log_date	2018/03/30
+#f_log_save_type 	0
+f_pm_unit:	Illinois Institute of Technology
+f_pm_addr:	Stuart Building, Room XXXX
+f_pm_starttime:	13:00
+f_pm_endtime:	17:30
+f_pm_teachername:	Teacher Name
+f_pm_teacherunit:	Department of Computer Science
+f_pm_teacherjob:	Professor
+f_pm_teachertel: Teacher email address
+f_pm_peoples:	4
+f_pm_content: Read paper about HPC, cache and workloads. Design and do some experiment on cluster. Write paper.	
+#f_pm_delay_num:	0
+#f_pm_early_level_num:	0
+#f_projectno	
+#f_visicity_displa
