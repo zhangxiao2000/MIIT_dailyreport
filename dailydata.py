@@ -15,7 +15,7 @@ import os
 from datetime import datetime
 import time
 import random
-from setting import InitData, SaveData
+from setting import InitData, SaveData,Timerange
 
 def readdata(fname):
     d={}
@@ -39,12 +39,14 @@ def readdata(fname):
     return d
     
 
-def preparedata(suffix,fname=InitData):
+def preparedata(suffix,randomtime,fname=InitData):
     detail={}
     #Basic data from params.txt
     #从params.txt中读取基础数据
     d=readdata(fname)
-    getrandomtime(d)
+    if randomtime:
+        getrandomtime(d)     
+           
     detail.update(d)
     
     detail['status']="basic"
@@ -96,11 +98,11 @@ def savedata(suffix,data):
     f.write(s)
     f.close()
 
-def getdata(delta=0):
+def getdata(delta=0,randomtime=False):
     #dayOfWeek = datetime.now().weekday()
     #dstr=time.strftime("%Y/%m/%d",time.localtime(time.time()))
     suffix=time.strftime("%Y%m%d",time.localtime(time.time()+delta))
-    d=preparedata(suffix)
+    d=preparedata(suffix,randomtime)
     if d==None:
         print(suffix," for rest.")
     else:
@@ -108,30 +110,19 @@ def getdata(delta=0):
     
     return d
     
-def gettodaydata():
-    return getdata(0)
+def gettodaydata(randomtime=False):
+    return getdata(0,randomtime)
     
-def getyesterdaydata():
+def getyesterdaydata(randomtime=False):
     #24*60*60=86400 seconds to get yesterday date.
-    return getdata(-86400)
+    return getdata(-86400,randomtime)
 
-def gettime(starthour,endhour,startminite,endminite):
+def gettime(timeitem):
+    starthour,endhour,startminite,endminite=timeitem
     h=random.randint(starthour,endhour)
     m=random.randint(startminite,endminite)
     s="%02d:%02d"%(h,m)
     return s
-    
-def get_f_am_starttime():
-    return gettime(8,8,30,59)
-
-def get_f_am_endtime():
-    return gettime(12,12,0,10)
-
-def get_f_pm_starttime():
-    return gettime(13,13,10,40)
-
-def get_f_pm_endtime():
-    return gettime(18,20,0,59)
 
 def getrandomtime(data):
     #如果每天培训时间范围基本固定，可以修改随机时间范围，简化填表过程
@@ -142,12 +133,11 @@ def getrandomtime(data):
     items=['f_am_starttime','f_am_endtime','f_pm_starttime','f_pm_endtime']
     for i in items:
         if i in data.keys():
-            funcname="get_"+i
-            data[i]=eval(funcname)()
+            data[i]=gettime(Timerange[i])
         
     return data 
 
 if __name__ == '__main__':
-    data=gettodaydata()
+    data=getyesterdaydata(True)
     print()
     printdata(data)
